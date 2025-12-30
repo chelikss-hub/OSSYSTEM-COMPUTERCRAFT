@@ -1,0 +1,40 @@
+local args = {...}
+rednet.open("top")
+term.setBackgroundColor(colors.blue)
+term.setCursorPos(1, 1)
+term.clear()
+
+if #args < 1 then
+  print("Usage (<> Required, [] Optional:")
+  print("sendfile [Computer ID] <File path>")
+  return
+end
+
+if #args == 1 then
+  if fs.exists(args[1]) then
+    textutils.slowPrint("Sending File..."..args[1].."!")
+    rednet.broadcast("RECEIVE")
+    rednet.broadcast(args[1])
+    file = fs.open(args[1], "r")
+    rednet.broadcast(file.read.All())
+    file.close()
+  else
+    print(args[1].."Does not exists")
+    return
+  end
+else
+  if fs.exists(args[2]) then
+    textutils.slowPrint("Sending File..."..args[2].." to "..args[1])
+    F =fs.open(args[2], "r")
+    id = tonumber(args[1])
+    rednet.send(id, "RECEIVE")
+    rednet.send(id, args[2])
+    rednet.send(id, F.readAll())
+    F.close()
+    shell.run(".menu")
+  else
+    print(args[2].."Does not exists")
+    return
+  end
+end
+
