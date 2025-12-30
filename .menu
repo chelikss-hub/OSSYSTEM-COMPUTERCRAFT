@@ -27,7 +27,7 @@ local function drawMenu()
   if nOption == 1 then
   term.write("Command")
 elseif nOption == 2 then
-  term.write("Start system")
+  term.write("Programs")
 elseif nOption == 3 then
   term.write("Shutdown")
 elseif nOption == 4 then
@@ -46,8 +46,8 @@ local function drawFrontend()
   printCentered( math.floor(h/2) - 3, "")
   printCentered( math.floor(h/2) - 2, "Start Menu" )
   printCentered( math.floor(h/2) - 1, "")
-  printCentered( math.floor(h/2) + 0, ((nOption == 1) and "[ Command  ]") or "Command" )
-  printCentered( math.floor(h/2) + 1, ((nOption == 2) and "[ Start system ]") or "Start system" )
+  printCentered( math.floor(h/2) + 0, ((nOption == 1) and "[  Command  ]") or "Command" )
+  printCentered( math.floor(h/2) + 1, ((nOption == 2) and "[ Programs ]") or "Programs" )
   printCentered( math.floor(h/2) + 2, ((nOption == 3) and "[ Shutdown ]") or "Shutdown" )
   printCentered( math.floor(h/2) + 3, ((nOption == 4) and "[ Recovery mode]") or " Recovery mode" ) 
   printCentered( math.floor(h/2) + 5, "")
@@ -88,7 +88,7 @@ term.clear()
 if nOption  == 1 then
 shell.run(".command")
 elseif nOption == 2 then
-shell.run("Start system")
+shell.run(".programs")
 elseif nOption == 3 then
 os.shutdown()
 elseif nOption == 4 then
