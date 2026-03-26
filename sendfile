@@ -25,6 +25,7 @@ if #args == 1 then
 else
   if fs.exists(args[2]) then
     textutils.slowPrint("Sending File..."..args[2].." to "..args[1])
+    sleep(3)
     F =fs.open(args[2], "r")
     id = tonumber(args[1])
     rednet.send(id, "RECEIVE")
