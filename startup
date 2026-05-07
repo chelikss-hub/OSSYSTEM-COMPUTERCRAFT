@@ -8,13 +8,7 @@ print("Loading...")
 local boot = 1
 term.setCursorPos(1,3)
 textutils.slowPrint("###############")
-print("Encrypting filesystem...")
-textutils.slowPrint("#######################")
-if boot == 2 then 
-os.pullEvent = os.pullEventRaw
-print("Filesystem encryption error")
-error("Filesystem error")
-end
+
 
 sleep(1)
 
